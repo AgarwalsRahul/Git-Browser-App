@@ -1,28 +1,8 @@
 package com.example.gitbrowser.domain.data
 
-data class DataState<out T>(
-    val data: T? = null,
-    val error: String? = null,
-    val loading: Boolean = false,
-){
-    companion object{
+sealed class DataState<out R> {
 
-        fun <T> success(
-            data: T
-        ): DataState<T> {
-            return DataState(
-                data = data,
-            )
-        }
-
-        fun <T> error(
-            message: String,
-        ): DataState<T> {
-            return DataState(
-                error = message
-            )
-        }
-
-        fun <T> loading(): DataState<T> = DataState(loading = true)
-    }
+    data class Success<out T>(val data: T) : DataState<T>()
+    data class Error(val exception: Exception) : DataState<Nothing>()
+    object Loading : DataState<Nothing>()
 }

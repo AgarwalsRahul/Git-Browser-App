@@ -1,5 +1,6 @@
 package com.example.gitbrowser.interactors
 
+import android.widget.ProgressBar
 import com.example.gitbrowser.dataSource.cache.RepoDao
 import com.example.gitbrowser.dataSource.cache.model.RepoEntityMapper
 import com.example.gitbrowser.domain.data.DataState
@@ -13,18 +14,19 @@ class GetRepo(
     private val entityMapper: RepoEntityMapper,
     private val repoDao: RepoDao
 ) {
-    fun execute(page: Int): Flow<DataState<List<Repo>>> = flow {
+    fun execute(page: Int, shouldDisplayProgressBar: Boolean): Flow<DataState<List<Repo>>> = flow {
         try {
-            emit(DataState.loading())
+            if (!shouldDisplayProgressBar)
+                emit(DataState.Loading)
             repoDao.getRepos(page).collect {
                 emit(
-                    DataState.success(
+                    DataState.Success(
                         entityMapper.fromEntityList(it)
                     )
                 )
             }
         } catch (e: Exception) {
-            emit(DataState.error(e.message ?: "Unknown Error"))
+            emit(DataState.Error(e))
         }
     }
 }

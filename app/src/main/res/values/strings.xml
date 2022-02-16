@@ -2,4 +2,7 @@
     <string name="app_name">Git Browser</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_repo">ADD REPO</string>
+    <string name="track_your_favourite_repo">Track your favourite repo</string>
+    <string name="share_button">Share Button</string>
 </resources>

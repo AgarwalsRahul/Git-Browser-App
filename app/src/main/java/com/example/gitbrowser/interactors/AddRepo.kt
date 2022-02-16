@@ -18,7 +18,7 @@ class AddRepo(
 
     fun execute(owner: String, repo: String) = flow<DataState<Repo>> {
         try {
-            emit(DataState.loading())
+            emit(DataState.Loading)
             // get repo from network
             val networkRepo = getRepoFromNetwork(owner, repo)
             // insert it into cache
@@ -26,11 +26,11 @@ class AddRepo(
             if(result<0){
                 throw Exception("Unable to add repo. Please try again")
             }else{
-                emit(DataState.success(networkRepo))
+                emit(DataState.Success(networkRepo))
             }
 
         } catch (e: Exception) {
-            emit(DataState.error<Repo>(e.message ?: "Unknown Error"))
+            emit(DataState.Error(e))
         }
 
     }
