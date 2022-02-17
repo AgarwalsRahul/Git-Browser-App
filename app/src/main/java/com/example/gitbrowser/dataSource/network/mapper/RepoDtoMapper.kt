@@ -1,5 +1,6 @@
-package com.example.gitbrowser.dataSource.network.response
+package com.example.gitbrowser.dataSource.network.mapper
 
+import com.example.gitbrowser.dataSource.network.response.RepoDto
 import com.example.gitbrowser.domain.model.Repo
 import com.example.gitbrowser.domain.util.DomainMapper
 

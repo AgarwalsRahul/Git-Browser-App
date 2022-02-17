@@ -3,7 +3,7 @@ package com.example.gitbrowser.di
 import androidx.room.Room
 import com.example.gitbrowser.dataSource.cache.RepoDao
 import com.example.gitbrowser.dataSource.cache.RepoDatabase
-import com.example.gitbrowser.dataSource.cache.model.RepoEntityMapper
+import com.example.gitbrowser.dataSource.cache.mapper.RepoEntityMapper
 import com.example.gitbrowser.presentation.BaseApplication
 import dagger.Module
 import dagger.Provides
@@ -32,7 +32,7 @@ class CacheModule {
 
     @Singleton
     @Provides
-    fun provideCacheRepoMapper(): RepoEntityMapper{
+    fun provideCacheRepoMapper(): RepoEntityMapper {
         return RepoEntityMapper()
     }
 }

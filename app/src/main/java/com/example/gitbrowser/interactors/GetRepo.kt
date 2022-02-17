@@ -1,8 +1,7 @@
 package com.example.gitbrowser.interactors
 
-import android.widget.ProgressBar
 import com.example.gitbrowser.dataSource.cache.RepoDao
-import com.example.gitbrowser.dataSource.cache.model.RepoEntityMapper
+import com.example.gitbrowser.dataSource.cache.mapper.RepoEntityMapper
 import com.example.gitbrowser.domain.data.DataState
 import com.example.gitbrowser.domain.model.Repo
 import kotlinx.coroutines.flow.Flow

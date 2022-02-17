@@ -1,5 +1,6 @@
-package com.example.gitbrowser.dataSource.cache.model
+package com.example.gitbrowser.dataSource.cache.mapper
 
+import com.example.gitbrowser.dataSource.cache.model.RepoEntity
 import com.example.gitbrowser.domain.model.Repo
 import com.example.gitbrowser.domain.util.DomainMapper
 

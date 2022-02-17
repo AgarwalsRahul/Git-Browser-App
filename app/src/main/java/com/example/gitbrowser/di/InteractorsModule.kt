@@ -1,9 +1,9 @@
 package com.example.gitbrowser.di
 
 import com.example.gitbrowser.dataSource.cache.RepoDao
-import com.example.gitbrowser.dataSource.cache.model.RepoEntityMapper
+import com.example.gitbrowser.dataSource.cache.mapper.RepoEntityMapper
 import com.example.gitbrowser.dataSource.network.RepoService
-import com.example.gitbrowser.dataSource.network.response.RepoDtoMapper
+import com.example.gitbrowser.dataSource.network.mapper.RepoDtoMapper
 import com.example.gitbrowser.interactors.AddRepo
 import com.example.gitbrowser.interactors.GetRepo
 import dagger.Module
