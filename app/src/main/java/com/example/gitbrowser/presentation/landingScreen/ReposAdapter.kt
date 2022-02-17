@@ -1,17 +1,24 @@
 package com.example.gitbrowser.presentation.landingScreen
 
+import android.content.Context
+import android.content.Intent
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gitbrowser.R
 import com.example.gitbrowser.domain.model.Repo
 
+
 class ReposListAdapter(
     private val interaction: Interaction? = null,
+    private val context: Context,
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -36,7 +43,8 @@ class ReposListAdapter(
                 parent,
                 false
             ),
-            interaction
+            interaction,
+            context
         )
     }
 
@@ -75,7 +83,8 @@ class ReposListAdapter(
     constructor(
         itemView: View,
         private val interaction: Interaction?,
-        ) : RecyclerView.ViewHolder(itemView) {
+        private val context: Context
+    ) : RecyclerView.ViewHolder(itemView) {
 
 
         private lateinit var repo: Repo
@@ -87,8 +96,23 @@ class ReposListAdapter(
 
             repo = item
             findViewById<TextView>(R.id.repo_name_edit_text).setText(item.name)
-            findViewById<TextView>(R.id.description).setText(item.description?:"There is no description")
+            findViewById<TextView>(R.id.description).setText(
+                item.description ?: "There is no description"
+            )
+            findViewById<ImageView>(R.id.share_button).setOnClickListener {
+                share(repo)
+            }
 
+        }
+
+        private fun share(repo: Repo) {
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.type = "text/plain"
+            shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, repo.name)
+            shareIntent.putExtra(Intent.EXTRA_TEXT, repo.url);
+//            shareIntent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+            startActivity(context, Intent.createChooser(shareIntent, "Share..."), null)
         }
     }
 
@@ -101,5 +125,7 @@ class ReposListAdapter(
         fun restoreListPosition()
 
     }
+
+
 
 }

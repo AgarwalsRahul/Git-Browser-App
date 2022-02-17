@@ -127,7 +127,7 @@ class LandingScreenFragment : Fragment(), ReposListAdapter.Interaction {
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(activity)
             addItemDecoration(TopSpacingItemDecoration(20))
-            listAdapter = ReposListAdapter(this@LandingScreenFragment)
+            listAdapter = ReposListAdapter(this@LandingScreenFragment,requireContext())
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
