@@ -3,6 +3,7 @@ package com.example.gitbrowser.presentation.landingScreen
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Parcelable
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -14,6 +15,7 @@ import com.example.gitbrowser.databinding.FragmentLandingScreenBinding
 import com.example.gitbrowser.domain.data.DataState
 import com.example.gitbrowser.domain.model.Repo
 import com.example.gitbrowser.presentation.MainActivity
+import com.example.gitbrowser.presentation.common.TopSpacingItemDecoration
 import com.example.gitbrowser.presentation.common.gone
 import com.example.gitbrowser.presentation.common.visible
 import com.example.gitbrowser.util.Constants
@@ -95,6 +97,7 @@ class LandingScreenFragment : Fragment(), ReposListAdapter.Interaction {
                     ) {
                         viewModel.setQueryExhausted(true)
                     }
+                    Log.d("LandingScreen","${dataState.data}")
                     listAdapter?.submitList(dataState.data)
                     listAdapter?.notifyDataSetChanged()
                     if (dataState.data.isEmpty()) {
@@ -109,7 +112,7 @@ class LandingScreenFragment : Fragment(), ReposListAdapter.Interaction {
                 }
                 is DataState.Error -> {
                     displayProgressBar(false)
-                    displayError(dataState.exception.message)
+                    displayError(dataState.message)
                 }
                 is DataState.Loading -> {
                     displayProgressBar(true)
@@ -122,15 +125,16 @@ class LandingScreenFragment : Fragment(), ReposListAdapter.Interaction {
 
     private fun setUpRecyclerView() {
         binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            listAdapter = ReposListAdapter()
+            layoutManager = LinearLayoutManager(activity)
+            addItemDecoration(TopSpacingItemDecoration(20))
+            listAdapter = ReposListAdapter(this@LandingScreenFragment)
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
                     val layoutManager = recyclerView.layoutManager as LinearLayoutManager
                     val lastPosition = layoutManager.findLastVisibleItemPosition()
                     if (lastPosition == listAdapter?.itemCount?.minus(1)) {
-                        viewModel.nextPage()
+//                        viewModel.nextPage()
                     }
                 }
             })

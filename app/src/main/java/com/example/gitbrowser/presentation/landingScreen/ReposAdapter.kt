@@ -75,8 +75,6 @@ class ReposListAdapter(
     constructor(
         itemView: View,
         private val interaction: Interaction?,
-
-
         ) : RecyclerView.ViewHolder(itemView) {
 
 
@@ -89,7 +87,7 @@ class ReposListAdapter(
 
             repo = item
             findViewById<TextView>(R.id.repo_name_edit_text).setText(item.name)
-            findViewById<TextView>(R.id.description).setText(item.description)
+            findViewById<TextView>(R.id.description).setText(item.description?:"There is no description")
 
         }
     }

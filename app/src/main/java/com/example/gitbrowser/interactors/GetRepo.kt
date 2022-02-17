@@ -26,7 +26,7 @@ class GetRepo(
                 )
             }
         } catch (e: Exception) {
-            emit(DataState.Error(e))
+            emit(DataState.Error(e.message?:"UNKNOWN ERROR!!"))
         }
     }
 }

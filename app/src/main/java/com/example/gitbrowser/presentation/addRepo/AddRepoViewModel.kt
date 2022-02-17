@@ -19,7 +19,14 @@ class AddRepoViewModel @Inject constructor(
         get() = _dataState
 
     private val _owner = MutableStateFlow("")
+    val owner: StateFlow<String>
+        get() = _owner
     private val _repo = MutableStateFlow("")
+    val repo: StateFlow<String>
+        get() = _repo
+
+    var ownerFieldFocus = true
+    var repoFieldFocus = true
 
 
     val isAddEnable = combine(_owner, _repo) { owner, repo ->
@@ -51,7 +58,7 @@ class AddRepoViewModel @Inject constructor(
         }
     }
 
-    private fun validate(text: String): Boolean {
+    fun validate(text: String): Boolean {
         if (text.isEmpty()) {
             return false
         }

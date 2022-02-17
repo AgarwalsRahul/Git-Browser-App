@@ -6,6 +6,6 @@ import retrofit2.http.Path
 
 interface RepoService {
 
-    @GET
+    @GET("{owner}/{repo}")
     suspend fun getRepo(@Path("owner") owner: String, @Path("repo") repo: String): RepoDto
 }
