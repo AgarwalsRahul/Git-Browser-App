@@ -166,7 +166,9 @@ class LandingScreenFragment : Fragment(), ReposListAdapter.Interaction {
     }
 
     private fun displayError(message: String?) {
-
+        (requireActivity() as MainActivity).displaySnackBar(
+            message ?: "Unknown Error. Please try again."
+        )
     }
 
     override fun onDestroyView() {

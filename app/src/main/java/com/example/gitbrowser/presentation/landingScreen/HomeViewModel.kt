@@ -1,10 +1,7 @@
 package com.example.gitbrowser.presentation.landingScreen
 
 import android.os.Parcelable
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.gitbrowser.domain.data.DataState
 import com.example.gitbrowser.domain.model.Repo
 import com.example.gitbrowser.interactors.GetRepo
@@ -17,6 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val getRepo: GetRepo,
+    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val _dataState = MutableLiveData<DataState<List<Repo>>>()
