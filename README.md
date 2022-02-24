@@ -6,6 +6,10 @@ A GitHub Client app that lets you track your favorite repository collectively wi
 # Installation
 [Click Here](https://drive.google.com/file/d/1gIPNNJb5P5t6pLW7zmL-KfSKxbcLzvHO/view?usp=sharing) to download the apk.
 
+## :camera_flash: Screenshots
+<img src="/screenshots/image1.png" width="260">&nbsp;      <img src="/screenshots/image2.png"
+width="260">
+
 ## Android Concepts Used Here:
 * Navigation Components
 * Pagination
