@@ -8,5 +8,8 @@
     <string name="add">ADD</string>
     <string name="repo_name">Repo Name</string>
     <string name="owner_organization">Owner / Organization</string>
+    <string name="branches">Branches</string>
+    <string name="commits">Commits</string>
+    <string name="issues">ISSUES</string>
 
 </resources>

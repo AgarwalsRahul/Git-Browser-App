@@ -108,7 +108,6 @@ class ReposListAdapter(
         private fun share(repo: Repo) {
             val shareIntent = Intent(Intent.ACTION_SEND)
             shareIntent.type = "text/plain"
-            shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, repo.name)
             shareIntent.putExtra(Intent.EXTRA_TEXT, repo.url);
 //            shareIntent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION

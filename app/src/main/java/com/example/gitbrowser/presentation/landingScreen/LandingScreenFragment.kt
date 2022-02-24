@@ -97,7 +97,7 @@ class LandingScreenFragment : Fragment(), ReposListAdapter.Interaction {
                     ) {
                         viewModel.setQueryExhausted(true)
                     }
-                    Log.d("LandingScreen","${dataState.data}")
+                    Log.d("LandingScreen", "${dataState.data}")
                     listAdapter?.submitList(dataState.data)
                     listAdapter?.notifyDataSetChanged()
                     if (dataState.data.isEmpty()) {
@@ -127,7 +127,7 @@ class LandingScreenFragment : Fragment(), ReposListAdapter.Interaction {
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(activity)
             addItemDecoration(TopSpacingItemDecoration(20))
-            listAdapter = ReposListAdapter(this@LandingScreenFragment,requireContext())
+            listAdapter = ReposListAdapter(this@LandingScreenFragment, requireContext())
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
@@ -181,7 +181,11 @@ class LandingScreenFragment : Fragment(), ReposListAdapter.Interaction {
     }
 
     override fun onItemSelected(position: Int, item: Repo) {
-
+        findNavController().navigate(
+            LandingScreenFragmentDirections.actionLandingScreenFragmentToDetailFragment(
+                item
+            )
+        )
     }
 
     override fun restoreListPosition() {

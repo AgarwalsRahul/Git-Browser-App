@@ -15,10 +15,7 @@ fun Activity.hideKeyboard() {
     window.decorView
 }
 
-fun View.showKeyboard() {
-    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
-}
+
 
 /**
  * Use everywhere except from Activity (Custom View, Fragment, Dialogs, DialogFragments).
