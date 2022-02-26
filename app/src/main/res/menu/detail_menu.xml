@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/delete_menu"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_baseline_delete_outline_24"
+        android:title="@string/delete_repo" />
+    <item
+        android:id="@+id/open_browser"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_visibility_24"
+        android:title="@string/open_repo_in_browser" />
+</menu>

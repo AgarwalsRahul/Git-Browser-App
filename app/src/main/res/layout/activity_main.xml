@@ -40,7 +40,7 @@
         android:id="@+id/progress_bar"
         app:layout_constraintVertical_bias=".5"
         android:indeterminateTint="@color/black"
-        android:visibility="visible"
+        android:visibility="gone"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

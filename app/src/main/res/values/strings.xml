@@ -11,5 +11,7 @@
     <string name="branches">Branches</string>
     <string name="commits">Commits</string>
     <string name="issues">ISSUES</string>
+    <string name="open_repo_in_browser">Open Repo in browser</string>
+    <string name="delete_repo">Delete Repo</string>
 
 </resources>
