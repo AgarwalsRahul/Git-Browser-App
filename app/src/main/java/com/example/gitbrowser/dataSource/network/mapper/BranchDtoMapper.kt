@@ -9,8 +9,8 @@ class BranchDtoMapper @Inject constructor(private val branchCommitDtoMapper: Bra
     DomainMapper<BranchDto, Branch> {
     override fun mapToDomainModel(model: BranchDto): Branch {
         return Branch(
-            model.name,
-            branchCommitDtoMapper.mapToDomainModel(model.commit)
+            name=model.name,
+            commit=branchCommitDtoMapper.mapToDomainModel(model.commit)
         )
     }
 

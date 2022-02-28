@@ -1,6 +1,8 @@
 package com.example.gitbrowser.di
 
 import com.example.gitbrowser.dataSource.network.RepoService
+import com.example.gitbrowser.dataSource.network.mapper.BranchCommitDtoMapper
+import com.example.gitbrowser.dataSource.network.mapper.BranchDtoMapper
 import com.example.gitbrowser.dataSource.network.mapper.RepoDtoMapper
 import com.example.gitbrowser.util.Constants
 import com.google.gson.GsonBuilder
@@ -20,6 +22,18 @@ object NetworkModule {
     @Provides
     fun provideRepoMapper(): RepoDtoMapper {
         return RepoDtoMapper()
+    }
+
+    @Singleton
+    @Provides
+    fun provideBranchCommitDtoMapper(): BranchCommitDtoMapper {
+        return BranchCommitDtoMapper()
+    }
+
+    @Singleton
+    @Provides
+    fun provideBranchDtoMapper(commitDtoMapper: BranchCommitDtoMapper): BranchDtoMapper {
+        return BranchDtoMapper(commitDtoMapper)
     }
 
     @Singleton
