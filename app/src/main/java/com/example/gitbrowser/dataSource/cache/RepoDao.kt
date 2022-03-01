@@ -25,5 +25,5 @@ interface RepoDao {
 
     @Transaction
     @Query("SELECT * FROM repos WHERE id = :repoId")
-    suspend fun getRepoWithBranches(repoId: Int): List<RepoWithBranches>
+    suspend fun getRepoWithBranches(repoId: Int): RepoWithBranches
 }

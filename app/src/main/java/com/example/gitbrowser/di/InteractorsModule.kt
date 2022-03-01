@@ -1,11 +1,14 @@
 package com.example.gitbrowser.di
 
 import com.example.gitbrowser.dataSource.cache.RepoDao
+import com.example.gitbrowser.dataSource.cache.mapper.BranchEntityMapper
 import com.example.gitbrowser.dataSource.cache.mapper.RepoEntityMapper
 import com.example.gitbrowser.dataSource.network.RepoService
+import com.example.gitbrowser.dataSource.network.mapper.BranchDtoMapper
 import com.example.gitbrowser.dataSource.network.mapper.RepoDtoMapper
 import com.example.gitbrowser.interactors.AddRepo
 import com.example.gitbrowser.interactors.DeleteRepo
+import com.example.gitbrowser.interactors.GetBranches
 import com.example.gitbrowser.interactors.GetRepo
 import dagger.Module
 import dagger.Provides
@@ -38,5 +41,17 @@ object InteractorsModule {
     @Provides
     fun provideDeleteRepo(repoEntityMapper: RepoEntityMapper, repoDao: RepoDao): DeleteRepo {
         return DeleteRepo(repoEntityMapper, repoDao)
+    }
+
+
+    @ViewModelScoped
+    @Provides
+    fun provideGetBranches(
+        branchEntityMapper: BranchEntityMapper,
+        repoDao: RepoDao,
+        repoService: RepoService,
+        branchDtoMapper: BranchDtoMapper
+    ): GetBranches {
+        return GetBranches(repoDao, branchEntityMapper, repoService, branchDtoMapper)
     }
 }
